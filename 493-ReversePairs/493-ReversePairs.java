@@ -1,4 +1,4 @@
-// Last updated: 12/2/2025, 8:22:09 PM
+// Last updated: 12/8/2025, 8:16:57 AM
 1class Solution {
 2public int reversePairs(int[] nums) {
 3if (nums == null || nums.length == 0) return 0;
