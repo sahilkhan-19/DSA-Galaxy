@@ -1,22 +1,20 @@
-// Last updated: 1/14/2026, 11:35:52 PM
-1class Solution {
-2    public List<List<Integer>> subsets(int[] nums) {
-3        List<List<Integer>> sub = new ArrayList<>();
-4        List<Integer> temp = new ArrayList<>();
-5        getSub(0,temp,nums,sub);
-6        return sub;
-7    }
-8    //[3,1,2]
-9    //3,1,2 - 3,1 - 3,2 - 3 <- LEFT TREE
-10    //1,2 - 1 - 2 - {}
-11    void getSub(int index, List<Integer> temp,int[] nums,List<List<Integer>> sub){
-12        if(index >= nums.length){
-13            sub.add(new ArrayList<>(temp));
-14            return;
-15        }
-16        temp.add(nums[index]);
-17        getSub(index+1,temp,nums, sub);
-18        temp.remove(temp.size() - 1);
-19        getSub(index+1,temp,nums,sub);
-20    }
-21}
+// Last updated: 1/14/2026, 11:37:31 PM
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> ans=new ArrayList<>();
+        List<Integer> v=new ArrayList<>();
+        int n=nums.length;
+        help(0,n,nums,ans,v);
+        return ans;
+    }
+    public void help(int ind,int n,int nums[],List<List<Integer>> ans,List<Integer> v){
+        if(ind==n){
+            ans.add(new ArrayList<>(v));
+            return;
+        }
+        v.add(nums[ind]);
+        help(ind+1,n,nums,ans,v);
+        v.remove(v.size()-1);
+        help(ind+1,n,nums,ans,v);
+    }
+}
